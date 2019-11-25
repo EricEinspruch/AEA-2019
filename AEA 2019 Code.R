@@ -44,10 +44,10 @@ View(AEA_2019)
 # Look at a variable
 #
 
-# Base R approach
+# Base R approach (note use of " $ ")
 AEA_2019$Part_4
 
-# Tidyverse approach
+# Tidyverse approach (note use of " %>% ")
 AEA_2019 %>% 
   select(ID, Part_4) %>% 
   head(n = 10)
@@ -71,6 +71,9 @@ AEA_2019 %>%
 #
 # Let R know if a variable is categorical (nominal): factor
 #
+
+# Display the structure of an object: str
+#    For example "int" is an integer, "Factor" is a factor
 
 str(AEA_2019$Program)
 AEA_2019 <- AEA_2019 %>% 
@@ -166,7 +169,8 @@ ggplot(AEA_2019, aes(x = Satisfaction, y = ..prop.. * 100, group = 1)) +
 
 # Bar chart (facet by program)
 ggplot(AEA_2019, aes(x = Satisfaction, y = ..prop.. * 100, group = 1)) +
-     geom_bar() +
+     geom_bar() + 
+     ylim(0, 100)+
      facet_wrap(~Program)
 
 # Save chart (default saves most recent chart)
